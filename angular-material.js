@@ -15929,7 +15929,7 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
 
       ngModelCtrl.$viewValue = minMaxValidator(ngModelCtrl.$viewValue);
 
-      var percent = (ngModelCtrl.$viewValue - min) / (max - min);
+      var percent = valueToPercent(ngModelCtrl.$viewValue);
       scope.modelValue = ngModelCtrl.$viewValue;
       element.attr('aria-valuenow', ngModelCtrl.$viewValue);
       setSliderPercent(percent);
@@ -16083,13 +16083,11 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
      * @returns {*}
      */
     function percentToValue( percent ) {
-      // return (min + percent * (max - min));
       var adjustedPercent = reverse ? (1 - percent) : percent;
       return (min + adjustedPercent * (max - min));
     }
 
     function valueToPercent( val ) {
-      // return (val - min)/(max - min);
       var percent = (val - min)/(max - min);
       return reverse ? (1 - percent) : percent;
     }
