@@ -449,8 +449,8 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
       thumbContainer.css(vertical ? 'bottom' : 'left', thumbPosition);
       activeTrack.css(vertical ? 'height' : 'width', thumbPosition);
 
-      element.toggleClass('_md-min', percent === 0);
-      element.toggleClass('_md-max', percent === 1);
+      element.toggleClass((reverse ? '_md-max' : '_md-min'), percent === 0);
+      element.toggleClass((reverse ? '_md-min' : '_md-max'), percent === 1);
     }
 
     /**
