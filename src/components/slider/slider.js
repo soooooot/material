@@ -451,9 +451,11 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
       percent = clamp(percent);
 
       var thumbPosition = (percent * 100) + '%';
+      var activeTrackPercent = reverse ? (1 - percent) * 100 + '%' : thumbPosition;
 
       thumbContainer.css(vertical ? 'bottom' : 'left', thumbPosition);
-      activeTrack.css(vertical ? 'height' : 'width', thumbPosition);
+      
+      activeTrack.css(vertical ? 'height' : 'width', activeTrackPercent);
 
       element.toggleClass((reverse ? '_md-max' : '_md-min'), percent === 0);
       element.toggleClass((reverse ? '_md-min' : '_md-max'), percent === 1);
